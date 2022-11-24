@@ -1,7 +1,3 @@
-(请吧地址做如下修改)
-
-https://github.com/sulfurlab/urban_methylmercury_project.
-
 #Workflow
 
 1. Software used in this workflow
@@ -43,8 +39,6 @@ https://github.com/sulfurlab/urban_methylmercury_project.
 
 2.1 Raw data download
 
-##SRA下载，循环提取Samples_download_ftp.txt每行第二列下载路径（需要遍历循环）
-
 ```python
 #!~/bin/bash
 old_name_arr=($(awk -F/ '{print $NF}' test.txt))
@@ -52,10 +46,6 @@ new_name_arr=($(awk '{print $1}' test.txt))
 link_arr=($(awk {'print $2'} test.txt))
 for ((i=0;i<${#link_arr[@]};i++))
   do
-    #输出下载命令
-	#echo "axel -a -n20 ${link_arr[i]}"
-    #echo "mv ${old_name_arr[i]} ${new_name_arr[i]}"
-    #直接下载
     axel -a -n20 ${link_arr[i]}
     mv ${old_name_arr[i]} ${new_name_arr[i]}
   done
@@ -65,7 +55,7 @@ for ((i=0;i<${#link_arr[@]};i++))
 
 The crAssphage (NC_024711.1) genomes were downloaded from GenBank 
 
-##public hgcA sequences 下载
+##public hgcA sequences 
 
 A lagre-scale hgcAB database was downloaded from https://figshare.com/authors/Elizabeth_McDaniel/7519667
 
@@ -75,7 +65,7 @@ A lagre-scale hgcAB database was downloaded from https://figshare.com/authors/El
 fasterq-dump --split-3 * -O . -e 30
 ```
 
-2.2 Read trimming （需要遍历循环）
+2.2 Read trimming 
 
 ```python
 #!~/bin/bash
@@ -90,11 +80,10 @@ for ((i=0;i<${#link_arr[@]};i++))
 
 
 
-2.3 Assembly (需要遍历循环)
+2.3 Assembly 
 
 ```
 #!~/bin/bash
-old_name_arr=($(awk -F/ '{print $NF}' test.txt))
 new_name_arr=($(awk '{print $1}' test.txt))
 link_arr=($(awk {'print $2'} test.txt))
 for ((i=0;i<${#link_arr[@]};i++))
@@ -108,15 +97,10 @@ for ((i=0;i<${#link_arr[@]};i++))
 2.4 ORFs prediction
 
 ```python
-#根据文件夹重新命名X_assembly的.fa文件
 
 python rename.py
 
-#合并所有X_assembly中.fa文件
-
 cat *_assembly/*.fa > all_assembly.fa
-
-#预测ORF
 
 prodigal -i all_assembly.fa -d all_assembly.fna -a all_assembly.faa
 ```
@@ -138,7 +122,7 @@ hmmsearch hgcB_verified.HMM all_assembly.faa > hgcB.out
 #hgcAB sequences extraction
 
 ```python
-python extract.py # 分别输出hgcA.fna, hgcB.fna
+python extract.py 
 
 cat hgcA.fna hgcA_public.fna > hgcA_final.fna
 
@@ -161,7 +145,6 @@ bowtie2-build hgcAB_phage.fna hgcAB_phage
 
 ```
 #!~/bin/bash
-old_name_arr=($(awk -F/ '{print $NF}' test.txt))
 new_name_arr=($(awk '{print $1}' test.txt))
 link_arr=($(awk {'print $2'} test.txt))
 for ((i=0;i<${#link_arr[@]};i++))
@@ -178,13 +161,9 @@ pileup.sh in=X.sam coverage=X-coverage
 mkdir coverage
 
 mv *_coverage coverage
+
+python coverage.py 
 ```
-
-
-
-python coverage.py #获得丰度矩阵
-
-
 
 #hgcAB abundance in each metagenome was normalized as gene coverage / per Giga base pairs.
 
