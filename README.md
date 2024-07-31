@@ -1,3 +1,11 @@
+# Workflow
+# 1. Software used in this workflow
+[Easyfig](https://mjsull.github.io/Easyfig/)
+[BLASTn](https://github.com/enormandeau/ncbi_blast_tutorial)
+
+
+
+
 # 2.1 Download of publicly available metagenomic and metatranscriptomic data
 
 ```shell
