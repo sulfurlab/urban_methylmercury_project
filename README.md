@@ -1,10 +1,59 @@
 # Workflow
 # 1. Software used in this workflow
+[Perl](https://github.com/Perl/perl5)
+
+
+[Python3](https://www.python.org/downloads/)
+
+
+[Axel](https://github.com/axel-download-accelerator/axel)
+
+
+[Sra-tools](https://github.com/ncbi/sra-tools)
+
+
+[Fastp](https://github.com/OpenGene/fastp)
+
+
+[Megahit](https://github.com/voutcn/megahit)
+
+
+[Prodiigal](https://github.com/hyattpd/Prodigal)
+
+
+[Hmmsearch](https://github.com/EddyRivasLab/hmmer)
+
+
+[Cd-hit](https://sites.google.com/view/cd-hit)
+
+
+[Bowtie2](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml)
+
+
+[BBtools](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/)
+
+
+[Graftm](https://github.com/geronimp/graftM)
+
+
+[Muscle](https://github.com/rcedgar/muscle)
+
+
+[Aliview](https://github.com/AliView/AliView)
+
+
+[Gblocks](https://github.com/atmaivancevic/Gblocks)
+
+[Iqtree2](https://github.com/iqtree/iqtree2)
+
+
+[iTOL](https://itol.embl.de/)
+
+
+
 [Easyfig](https://mjsull.github.io/Easyfig/)
 
 [BLASTn](https://github.com/enormandeau/ncbi_blast_tutorial)
-
-
 
 
 # 2.1 Download of publicly available metagenomic and metatranscriptomic data
